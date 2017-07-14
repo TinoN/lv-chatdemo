@@ -4,8 +4,10 @@
 		<!-- singleMessage is just a named to show the relation-->
 		<!-- messageToPass is bound so it can then be accessed in ChatMessage.vue -->
 		<!-- messages is prepare from js and defined on <chat-log> in chat.blade.php -->
+		<!-- fuer :key="singleMessage.user"
+		siehe: https://vuejs.org/v2/guide/list.html#key -->
 
-		<chat-message v-for="singleMessage in messages" v-bind:messageToPass="singleMessage"></chat-message>
+		<chat-message v-for="singleMessage in messages" v-bind:messageToPass="singleMessage" :key="singleMessage.user"></chat-message>
 	</div>		
 </template>
 
