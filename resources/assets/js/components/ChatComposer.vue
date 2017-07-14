@@ -11,7 +11,7 @@
 	export default {
 		data () {
 			return {
-				messageText: 'default'
+				messageText: ''
 			}
 		},
 		methods: {
@@ -22,7 +22,9 @@
 			sendMessage () {
 				this.$emit('messagesent', {
 					message: this.messageText,
-					user: 'john doooooe'
+					user: {
+						name: $('.navbar-right .dropdown-toggle').text()
+					}
 				});
 				this.messageText = '';
 			}

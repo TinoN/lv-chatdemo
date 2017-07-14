@@ -48,23 +48,22 @@ Vue.component('chat-composer', chatComposerT);
 const app = new Vue({
     el: '#app',
     data: {
-    	messagesGlobal: [
-			{
-				message: 'hey',
-				user: 'john'
-			},
-			{
-				message: 'hello',
-				user: 'vivi'
-			}
-		]
+    	messagesGlobal: []
 	},
     methods: {
     	addMessage (message) {
     		//add to existing messages
     		this.messagesGlobal.push(message);
-    		console.log ('message added');
+
+            //save to the database
+            axios.post('messages', message);
+    		
     	}
+    },
+    created () {
+        axios.get('/messages').then(response => {            
+            this.messagesGlobal = response.data;
+        });
     }
 });
 

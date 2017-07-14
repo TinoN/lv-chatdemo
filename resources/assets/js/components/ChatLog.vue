@@ -7,7 +7,8 @@
 		<!-- fuer :key="singleMessage.user"
 		siehe: https://vuejs.org/v2/guide/list.html#key -->
 
-		<chat-message v-for="singleMessage in messages" v-bind:messageToPass="singleMessage" :key="singleMessage.user"></chat-message>
+		<chat-message v-for="singleMessage in messages" v-bind:messageToPass="singleMessage" :key="singleMessage.id"></chat-message>
+		<div class="empty" v-show="messages.length === 0">Nothing here yet!</div>
 	</div>		
 </template>
 
@@ -20,5 +21,9 @@
 <style lang="css">
 	.chat-log .chat-message:nth-child(even){
 		background-color:#ccc;
+	}
+	.empty {
+		padding: 1rem;
+		text-align: center;
 	}
 </style>
