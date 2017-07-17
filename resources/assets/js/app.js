@@ -48,7 +48,8 @@ Vue.component('chat-composer', chatComposerT);
 const app = new Vue({
     el: '#app',
     data: {
-    	messagesGlobal: []
+    	messagesGlobal: [],
+        usersInRoom: []
 	},
     methods: {
     	addMessage (message) {
@@ -56,7 +57,7 @@ const app = new Vue({
     		this.messagesGlobal.push(message);
 
             //save to the database
-            axios.post('messages', message);
+            axios.post('/messages', message);
     		
     	}
     },
@@ -64,6 +65,24 @@ const app = new Vue({
         axios.get('/messages').then(response => {            
             this.messagesGlobal = response.data;
         });
+    
+        Echo.join('chatroom')
+            .here((users) => {
+                this.usersInRoom = users;
+            })
+            .joining((user) => {
+                this.usersInRoom.push(user);
+            })
+            .leaving((user) =>{
+                this.usersInRoom = this.usersInRoom.filter(u => u != user);
+            })
+            .listen('MessagePosted', (event) => {
+                this.messagesGlobal.push({
+                    message: event.message.message,
+                    user: event.user
+                });
+                
+            });
     }
 });
 

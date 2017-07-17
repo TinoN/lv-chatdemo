@@ -2,7 +2,10 @@
 
 @section('content')
     <div id="app">
-        <h1>CHATROOM</h1>
+        <div class="panel-heading">
+            CHATROOM
+            <span class="badge pull-right">@{{ usersInRoom.length }}</span>
+        </div>
         <!-- messagesGlobal in app.js defined -->
         <!-- v-bin:prop="data" -->
         <chat-log v-bind:messages="messagesGlobal"></chat-log>
