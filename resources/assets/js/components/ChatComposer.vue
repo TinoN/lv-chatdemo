@@ -2,8 +2,8 @@
 	<div class="chat-composer">
 		<!-- v-model bind is input to a vue model, so that the content of messagText will be displayed/populated in/to the input element-->
 		<!-- v-on:keyup.enter entspricht @keydown.enter -->
-		<input type="text" name="message" placeholder="start typing your message..." v-model="messageText" v-on:keyup.enter="sendMessage">
-		<button class="btn btn-primary" @click="sendMessage">SEND</button>
+		<input id="message" type="text" name="message" placeholder="start typing your message..." v-model="messageText" v-on:keyup.enter="sendMessage">
+		<button class="btn btn-primary" @click="sendMessage">Send</button>
 	</div>		
 </template>
 

@@ -47711,6 +47711,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
       expression: "messageText"
     }],
     attrs: {
+      "id": "message",
       "type": "text",
       "name": "message",
       "placeholder": "start typing your message..."
@@ -47733,7 +47734,7 @@ var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._sel
     on: {
       "click": _vm.sendMessage
     }
-  }, [_vm._v("SEND")])])
+  }, [_vm._v("Send")])])
 }
 var staticRenderFns = []
 render._withStripped = true
